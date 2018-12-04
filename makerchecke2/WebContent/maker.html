@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<title>Document</title>
+
+<body>
+<h1>maker form</h1>
+<br>
+<form action="upload" method="post" enctype="multipart/form-data">
+  
+ <input type="text" name="description" />
+    <input type="file" name="file" />
+    <input type="submit" />
+</form>
+    </br>
+    
+    Rejection Level Parameter:
+    <br>
+    R=Record Level Rejection
+    F=File Level Rejection
+    </br>
+    <br>
+    
+
+					<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Rejection level
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Record Level Rejection</a></li>
+      <li><a href="#">File Level Rejection</a></li>
+ 
+    </ul>
+    </br>
+  </div>
+  </body>
+</html>
