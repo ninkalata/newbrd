@@ -21,14 +21,15 @@ import com.demo.training.Newuser;
 	public class FileUpload {
 	private static BufferedReader reader;
 	private static int customerId = 0;
-	public static void main(InputStream fileContent, String fileName) throws IOException, SQLException {
+	public static void main(InputStream fileContent, String fileName,String flevel) throws IOException, SQLException {
 	String   CustomerCode,  CustomerName,  CustomerAddress1, CustomerAddress2, CustomerPinCode, Emailaddress, ContactNumber, PrimaryContactPerson, RecordStatus, ActiveInactiveFlag,   CreateDate,  CreatedBy, ModifiedDate,  ModifiedBy, AuthorizedDate, AuthorizedBy ;
 	try {
 		//check the file will be in .txt format or not
-	
+		
 	BufferedReader reader = new BufferedReader(new InputStreamReader(fileContent));
 	if (fileName.endsWith(".txt")) {
 	System.out.println("Correct");
+	
 	String l;
 				//spliting ~sysmbol from each fields
 				while ((l = reader.readLine()) != null) {
@@ -62,25 +63,66 @@ import com.demo.training.Newuser;
 				// file level validation
 				
 		     //record level validation
+				if(flevel.equals("recordlevel"))
+				{
 				 if( checker(lines)==true) {
+					 try {
 					 customerId++;
           //System.out.println(checker(lines));
 				Javaconnection.insertFile( customerId, CustomerCode, CustomerName,  CustomerAddress1, CustomerAddress2, CustomerPinCode, Emailaddress, ContactNumber,PrimaryContactPerson, RecordStatus, ActiveInactiveFlag, CreateDate, CreatedBy,ModifiedDate, ModifiedBy, AuthorizedDate,AuthorizedBy);
 								}
+					 catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 // 				 else if(checker(lines)==false){
 //					System.exit(0);
 //			 }
 				}
-				reader.close();
-	}
+					 for(String line:lines) {
+							System.out.println(line);
+								}
+				 }
+				
+					 
+					 else {
+							System.out.println("");
+						}
+				}
+			
+					 
+			//FILEVALIDAT
+				if(flevel.equals("filelevel"))
+				{
+				if( checker(lines)==true) {
+					 try {
+					 customerId++;
+         //System.out.println(checker(lines));
+				Javaconnection.insertFile( customerId, CustomerCode, CustomerName,  CustomerAddress1, CustomerAddress2, CustomerPinCode, Emailaddress, ContactNumber,PrimaryContactPerson, RecordStatus, ActiveInactiveFlag, CreateDate, CreatedBy,ModifiedDate, ModifiedBy, AuthorizedDate,AuthorizedBy);
+								}
+					 catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+//				 else if(checker(lines)==false){
+//					System.exit(0);
+//			 }
+				}
+				
+				}
+				
+					 
+				
 	else {
 			System.out.println("Invalid");
 		 }
+	}
+	}
+	}
 	}
 	catch(FileNotFoundException exception) {
 		 System.out.println(exception);
 		}	
 	}
+	
        //Customer name validation
 		public static boolean  customerName(String lines) {
 				 		  Pattern p= Pattern.compile(("^[a-zA-Z\\s]*$"));
@@ -126,9 +168,10 @@ import com.demo.training.Newuser;
 				 	}
 			 		return false;
 			 	}
+	}
 			 	
 			 	
 
-	}
+	
 
 

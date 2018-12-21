@@ -23,15 +23,17 @@ import com.demo.training1.FileUpload;
 	public class fileupload extends HttpServlet {
 	// upload form in database
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
- String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
+// String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
 	    Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
 	    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
 	    InputStream fileContent = filePart.getInputStream();
 	    String mainvalidate = request.getParameter("type");
+	    String flevel  = request.getParameter("level");
+	    
 	
 
 	try{
-		FileUpload.main(fileContent,fileName);
+		FileUpload.main(fileContent,fileName,flevel);
 	}
 	catch(Exception exception){
 		exception.printStackTrace();

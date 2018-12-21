@@ -17,33 +17,43 @@
 <title>Document</title>
 
 <body>
-<h1>maker form</h1>
-<br>
-<form action="upload" method="post" enctype="multipart/form-data">
-  
- <input type="text" name="description" />
-    <input type="file" name="file" />
-    <input type="submit" />
-</form>
-    </br>
-    
-    Rejection Level Parameter:
-    <br>
-    R=Record Level Rejection
-    F=File Level Rejection
-    </br>
-    <br>
-    
 
-					<div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Rejection level
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Record Level Rejection</a></li>
-      <li><a href="#">File Level Rejection</a></li>
- 
-    </ul>
-    </br>
-  </div>
-  </body>
+	<div class="jumbotron">
+		<h1>MAKER FORM</h1>
+	</div>
+	<br>
+	<form action="upload" method="post" enctype="multipart/form-data">
+
+		<br> <h2>FILE NAME: </h2>
+		<input
+			type="file" name="file" /><br> 
+			<input type="submit"
+			class="btn btn-danger"></br></br>
+
+	</br>
+
+
+	<br>
+	<p>
+		<strong>Rejection Level Parameter:</strong>R=Record Level Rejection
+		F=File Level Rejection
+	</p>
+	</br>
+	<br>
+	<div class="dropdown">
+		<button class="btn btn-primary dropdown-toggle" type="button"
+			data-toggle="dropdown">
+			Rejection level <span class="caret"></span>
+		</button>
+	<select class="dropdown-menu" name="level">
+   <option value="recordlevel">recordlevel</option>
+   <option value="filelevel">filelevel</option>
+
+</select>
+		</br>
+	</div>
+
+	</form>
+		
+</body>
 </html>

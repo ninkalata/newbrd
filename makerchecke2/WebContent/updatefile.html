@@ -5,47 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: black;
-}
-
-* {
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     box-sizing: border-box;
 }
 
-/* Add padding to containers */
-.container {
-    padding: 16px;
-    background-color: white;
-}
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-}
 
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-}
 
-/* Full-width input fields */
-input[type=textarea], input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-}
-
-input[type=textarea]:focus, input[type=password]:focus {
+input[type=textarea],input[input=text]:focus{
     background-color: #ddd;
     outline: none;
 }
@@ -58,7 +31,7 @@ hr {
 
 /* Set a style for the submit button */
 .registerbtn {
-    background-color: #4CAF50;
+    background-color:#008CBA;
     color: white;
     padding: 16px 20px;
     margin: 8px 0;
@@ -72,25 +45,28 @@ hr {
     opacity: 1;
 }
 
-/* Add a blue text color to links */
-a {
-    color: dodgerblue;
-}
+
+
 
 /* Set a grey background color and center the text of the "sign in" section */
 .signin {
     background-color: #f1f1f1;
     text-align: center;
 }
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
 </style>
 
 </head>
-<body>
-
-<form action="Newuser" style="width: 500px" method="post" name=myform  onclick="return validateForm()" >
+<body style="background-color:powderblue;">
+<center>
+<form action="Newuser" style="width: 500px" method="post" name=myform  onsubmit="myFunction()">
   <div class="container">
   <div class="dropdown">
-    <h1>Register</h1>
+    <h1>REGISTER FORM</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
 
@@ -101,13 +77,13 @@ a {
     <input type="text" placeholder="Enter CustomerCode" name="CustomerCode"  VALUE ="Nsbt01"required>
 
     <label for="CustomerName"><b>CustomerName</b></label>
-    <input type="textarea" placeholder="CustomerName" name="CustomerName" required pattern="[A-Za-z]+" title="Invalid characters" VALUE="Nsbt pvt Ltd">
+    <input type="text" placeholder="CustomerName" name="CustomerName" required pattern="^[a-zA-Z0-9 ]*$" title="Invalid characters" >
     
     <label for="CustomerAddress1"><b>CustomerAddress1</b></label>
-    <input type=textarea placeholder="CustomerAddress1" name="CustomerAddress1" value="A-39,Noida" required>
+    <textarea rows="2" cols="60"placeholder="CustomerAddress1" name="CustomerAddress1" value="A-39,Noida" required></textarea>
     
     <label for="CustomerAddress2"><b>CustomerAddress2</b></label>
-    <input type="textarea" placeholder="CustomerAddress2" name="CustomerAddress2" value="U.P"required>
+    <textarea rows="2" cols="60" placeholder="CustomerAddress2" name="CustomerAddress2" value="U.P"required></textarea>
 
     <label for="CustomerPinCode"><b>CustomerPinCode</b></label>
     <input type="text" placeholder="CustomerPinCode" name="CustomerPinCode"  id="CustomerPinCode"  pattern=".{6}" title="Pin code should be 6 digits" value="201307">
@@ -116,38 +92,57 @@ a {
     <input type="text" placeholder="Emailaddress" name="Emailaddress" id= " Emailaddress "   pattern=  "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Invalid Email format" value="ninkalata@gmail.com" >
 
     <label for="ContactNumber"><b>ContactNumber</b></label>
-    <input type="text" placeholder="ContactNumber" name="ContactNumber" required VALUE="9998065432">
+    <input type="text" placeholder="ContactNumber" name="ContactNumber" required VALUE="99980654321">
     
    <label for="PrimaryContactPerson"><b>PrimaryContactPerson</b></label>
     <input type="text" placeholder="PrimaryContactPerson" name="PrimaryContactPerson" required VALUE="Chitralekha">
     
     <label for="RecordStatus"><b>RecordStatus</b></label>
-    <input type="text" placeholder="RecordStatus" name="RecordStatus" required Pattern="M||N||D||A||R" title="Invalid Record Status" value="N">  
-    <P><Strong> NOTE:</Strong>N- New, M- Modified, D- Deleted, A= Authorized, R=Rejected</P>
+    <input type="text" placeholder="RecordStatus" name="RecordStatus" required Pattern=((?:A)|(?:M)|(?:D)|(?:R)|(?:N)) title="Invalid Record Status" value="N">  
+    <P><Strong> NOTE:</Strong>N=New, M=Modified, D=Deleted, A= Authorized, R=Rejected</P>
     
-    <P><strong>ActiveInactiveFlag</strong></P>
-    <select>
-            <option value="ACTIVE FLAG"> A </option>>
-            <option value="INACTIVE FLAG"> I </option>
-           
+  
+    
+     <label for="ActiveInactiveFlag"><b>ActiveInactiveFlag</b></label>
+    <select name="ActiveInactiveFlag">
+      <option value="A">Active</option>
+      <option value="I">Inactive</option>
+     
     </select>
-    <p><strong>Note:</strong> A –  Active, I - Inactive</p>
  
     
     <label for="CreateDate"><b>CreateDate</b></label>
-    <input type="text" placeholder="CreateDate" name="CreateDate" required VALUE="13/Aug/2010">
+    <input type="text" name= "CreateDate" />
+   
+    <script>
+    
+function myFunction() {
+	var date = new Date(); // M-D-YYYY
+
+	var d = date.getDate();
+	var m = date.getMonth() + 1;
+	var y = date.getFullYear();
+
+	var dateString = (d <= 9 ? '0' + d : d) + '-' + (m <= 9 ? '0' + m : m) + '-' + y;
+
+	document.getElementById("CreateDate").innerHTML = dateString;
+}
+</script>
+  
 
     <label for="CreatedBy"><b>CreatedBy</b></label>
-    <input type="text" placeholder="CreatedBy" name="CreatedBy" required VALUE="TANU">
+    <input type="text" placeholder="CreatedBy" name="CreatedBy" required  pattern="master" title="invalid user id">
     
     <label for="ModifiedDate"><b>ModifiedDate</b></label>
-    <input type="text" placeholder="ModifiedDate" name="ModifiedDate" required VALUE="23/Aug/2010">
+    <input type="text" placeholder="DD-MMM-YYYY" name="ModifiedDate" required VALUE="23/Aug/2010" pattern="^([0-2]?\d|3[0-1])-(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)-\d{4}" 
+title="Enter a date in this format DD-MMM-YYYY">
     
      <label for="ModifiedBy"><b>ModifiedBy</b></label>
     <input type="text" placeholder="ModifiedBy" name="ModifiedBy" required VALUE="ANNI">
     
     <label for="AuthorizedDate"><b>AuthorizedDate</b></label>
-    <input type="text" placeholder="AuthorizedDate" name="AuthorizedDate" required VALUE="30/Aug/2010">
+    <input type="text" placeholder="DD-MMM-YYYY" name="AuthorizedDate" required VALUE="30/Aug/2010"  pattern="^([0-2]?\d|3[0-1])-(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)-\d{4}" 
+title="Enter a date in this format DD-MMM-YYYY">
 
     <label for="AuthorizedBy"><b>AuthorizedBy</b></label>
     <input type="text" placeholder="AuthorizedBy" name="AuthorizedBy" required VALUE="NINK">
@@ -156,11 +151,11 @@ a {
     <hr>
     
 
-    <input  type="submit" >
+    <button type="submit" class="registerbtn">Register</button>
   </div>
   </div>
   
 </form>
-
+</center>
 </body>
 </html>
